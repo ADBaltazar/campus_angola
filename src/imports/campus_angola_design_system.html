@@ -1,0 +1,1489 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+:root {
+  --ca-red: #C0182A;
+  --ca-red-deep: #8B0F1E;
+  --ca-red-soft: #F5D0D4;
+  --ca-red-muted: #FBECEE;
+  --ca-black: #0E0E10;
+  --ca-graphite: #1A1A1F;
+  --ca-graphite-mid: #2C2C35;
+  --ca-gold: #C49A2A;
+  --ca-gold-soft: #F5EDD0;
+  --ca-gold-pale: #FBF8EF;
+  --ca-white: #FAFAF8;
+  --ca-gray-100: #F2F2EF;
+  --ca-gray-200: #E3E3DE;
+  --ca-gray-400: #9E9E96;
+  --ca-gray-600: #5A5A54;
+  --ca-gray-800: #2A2A26;
+  --ca-success: #1A7A4A;
+  --ca-success-bg: #E8F5EE;
+  --ca-warning: #B07A10;
+  --ca-warning-bg: #FDF3DC;
+  --ca-error: #C0182A;
+  --ca-error-bg: #FBECEE;
+  --ca-info: #1A5AA0;
+  --ca-info-bg: #E8F0FB;
+
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 380ms;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--ca-white);
+  color: var(--ca-black);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ds-root {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
+/* NAV */
+.ds-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--ca-gray-200);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 52px;
+  overflow-x: auto;
+}
+
+.ds-nav-logo {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ca-red);
+  text-transform: uppercase;
+  margin-right: 24px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ds-nav-link {
+  font-size: 12px;
+  color: var(--ca-gray-600);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: color var(--dur-fast), background var(--dur-fast);
+  cursor: pointer;
+}
+.ds-nav-link:hover { color: var(--ca-black); background: var(--ca-gray-100); }
+.ds-nav-link.active { color: var(--ca-red); font-weight: 500; }
+
+/* SECTIONS */
+.ds-section {
+  padding: 64px 24px 0;
+}
+
+.ds-overline {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ca-red);
+  margin-bottom: 10px;
+}
+
+.ds-section-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ca-black);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.ds-section-desc {
+  font-size: 14px;
+  color: var(--ca-gray-600);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* DIVIDER */
+.ds-divider {
+  height: 0.5px;
+  background: var(--ca-gray-200);
+  margin: 0 24px;
+}
+
+/* BRAND HERO */
+.brand-hero {
+  background: var(--ca-graphite);
+  padding: 64px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brand-wordmark-main {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--ca-white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.brand-wordmark-accent {
+  color: var(--ca-red);
+}
+
+.brand-wordmark-sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ca-gray-400);
+}
+
+.brand-tagline {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ca-gray-400);
+  max-width: 280px;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.brand-mark {
+  width: 72px;
+  height: 72px;
+  background: var(--ca-red);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-mark-inner {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.03em;
+}
+
+/* COLOR SYSTEM */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.color-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 0.5px solid var(--ca-gray-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.color-swatch {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 12px;
+}
+
+.color-swatch-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 7px;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.85);
+}
+
+.color-info {
+  background: white;
+  padding: 10px 12px;
+}
+
+.color-name {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ca-black);
+  margin-bottom: 2px;
+}
+
+.color-hex {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: var(--ca-gray-600);
+}
+
+.color-use {
+  font-size: 10px;
+  color: var(--ca-gray-400);
+  margin-top: 4px;
+}
+
+/* TYPOGRAPHY */
+.type-specimen { margin-bottom: 32px; }
+
+.type-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 0.5px solid var(--ca-gray-200);
+}
+
+.type-meta {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.type-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ca-gray-400);
+  margin-bottom: 2px;
+}
+
+.type-spec {
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  color: var(--ca-gray-400);
+}
+
+.type-example {
+  flex: 1;
+  color: var(--ca-black);
+}
+
+/* SPACING */
+.spacing-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.spacing-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.spacing-bar-wrap {
+  width: 200px;
+}
+
+.spacing-bar {
+  height: 8px;
+  background: var(--ca-red);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+.spacing-label {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: var(--ca-gray-600);
+  width: 60px;
+}
+
+.spacing-desc {
+  font-size: 11px;
+  color: var(--ca-gray-400);
+}
+
+/* COMPONENT SECTION */
+.comp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.comp-card {
+  background: white;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.comp-card-title {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ca-gray-400);
+  margin-bottom: 20px;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: var(--radius-md);
+  padding: 0 16px;
+  height: 38px;
+  transition: all var(--dur-fast) var(--ease-out);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--ca-red);
+  color: white;
+  box-shadow: 0 1px 3px rgba(192,24,42,0.3);
+}
+.btn-primary:hover { background: var(--ca-red-deep); box-shadow: 0 4px 12px rgba(192,24,42,0.35); transform: translateY(-1px); }
+
+.btn-secondary {
+  background: var(--ca-gray-100);
+  color: var(--ca-black);
+  border: 0.5px solid var(--ca-gray-200);
+}
+.btn-secondary:hover { background: var(--ca-gray-200); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ca-red);
+  border: 1px solid var(--ca-red);
+}
+.btn-ghost:hover { background: var(--ca-red-muted); }
+
+.btn-gold {
+  background: var(--ca-gold);
+  color: white;
+  box-shadow: 0 1px 3px rgba(196,154,42,0.3);
+}
+.btn-gold:hover { background: #A8841E; transform: translateY(-1px); }
+
+.btn-sm { height: 30px; padding: 0 12px; font-size: 12px; }
+.btn-lg { height: 48px; padding: 0 24px; font-size: 15px; border-radius: var(--radius-lg); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* INPUTS */
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+.input-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ca-gray-800);
+}
+.input-field {
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 0 12px;
+  height: 38px;
+  border: 1px solid var(--ca-gray-200);
+  border-radius: var(--radius-md);
+  outline: none;
+  background: white;
+  color: var(--ca-black);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+  width: 100%;
+}
+.input-field:focus {
+  border-color: var(--ca-red);
+  box-shadow: 0 0 0 3px rgba(192,24,42,0.08);
+}
+.input-field::placeholder { color: var(--ca-gray-400); }
+.input-field.error { border-color: var(--ca-error); }
+.input-hint { font-size: 11px; color: var(--ca-gray-400); }
+.input-hint.error-msg { color: var(--ca-error); }
+
+/* BADGES */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+.badge-red { background: var(--ca-red-soft); color: var(--ca-red-deep); }
+.badge-gold { background: var(--ca-gold-soft); color: #7A5A10; }
+.badge-success { background: var(--ca-success-bg); color: var(--ca-success); }
+.badge-info { background: var(--ca-info-bg); color: var(--ca-info); }
+.badge-gray { background: var(--ca-gray-100); color: var(--ca-gray-600); }
+
+.badge-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* CARDS */
+.student-card {
+  background: white;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  transition: box-shadow var(--dur-base), transform var(--dur-base);
+  cursor: pointer;
+}
+.student-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 16px; font-weight: 700;
+  flex-shrink: 0;
+}
+.avatar-red { background: var(--ca-red-muted); color: var(--ca-red); }
+.avatar-gold { background: var(--ca-gold-pale); color: var(--ca-gold); }
+.avatar-graphite { background: var(--ca-gray-100); color: var(--ca-graphite); }
+
+.student-info { flex: 1; }
+.student-name { font-family: var(--font-heading); font-size: 13px; font-weight: 600; color: var(--ca-black); }
+.student-meta { font-size: 11px; color: var(--ca-gray-400); margin-top: 2px; }
+
+.grade-pill {
+  font-family: var(--font-heading);
+  font-size: 14px; font-weight: 700;
+  color: var(--ca-red);
+  background: var(--ca-red-muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+}
+
+/* PROGRESS */
+.progress-wrap { margin-bottom: 14px; }
+.progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.progress-title { font-size: 12px; font-weight: 500; color: var(--ca-black); }
+.progress-pct { font-size: 11px; font-family: 'Courier New', monospace; color: var(--ca-gray-400); }
+.progress-bar-bg {
+  height: 6px; background: var(--ca-gray-100); border-radius: 3px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%; border-radius: 3px;
+  transition: width 0.8s var(--ease-out);
+}
+.fill-red { background: var(--ca-red); }
+.fill-gold { background: var(--ca-gold); }
+.fill-success { background: var(--ca-success); }
+
+/* ALERTS */
+.alert {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border-left: 3px solid;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.alert-icon { font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+.alert-content { flex: 1; }
+.alert-title { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+.alert-desc { font-size: 11px; opacity: 0.8; }
+.alert-success { background: var(--ca-success-bg); border-color: var(--ca-success); color: #0F5A34; }
+.alert-warning { background: var(--ca-warning-bg); border-color: var(--ca-warning); color: #7A5510; }
+.alert-error { background: var(--ca-error-bg); border-color: var(--ca-error); color: var(--ca-red-deep); }
+.alert-info { background: var(--ca-info-bg); border-color: var(--ca-info); color: var(--ca-info); }
+
+/* UNIVERSITY CARD */
+.uni-card {
+  background: white;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur-base), transform var(--dur-base);
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.uni-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.uni-card-header {
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  position: relative;
+}
+.uni-card-logo {
+  width: 40px; height: 40px;
+  background: white;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 14px; font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+.uni-card-body { padding: 14px 16px; }
+.uni-name { font-family: var(--font-heading); font-size: 13px; font-weight: 600; color: var(--ca-black); margin-bottom: 4px; }
+.uni-meta { font-size: 11px; color: var(--ca-gray-400); margin-bottom: 10px; }
+.uni-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* STAT CARDS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: white;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 22px; font-weight: 700;
+  color: var(--ca-black);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label { font-size: 11px; color: var(--ca-gray-400); }
+.stat-delta { font-size: 10px; font-weight: 600; margin-top: 6px; }
+.delta-up { color: var(--ca-success); }
+.delta-down { color: var(--ca-error); }
+
+/* DASHBOARD PREVIEW */
+.dashboard-preview {
+  background: var(--ca-gray-100);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  margin-top: 32px;
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dash-greeting {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ca-black);
+}
+.dash-sub { font-size: 12px; color: var(--ca-gray-400); }
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.dash-main { display: flex; flex-direction: column; gap: 16px; }
+.dash-side { display: flex; flex-direction: column; gap: 16px; }
+
+.course-list-card {
+  background: white;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.course-list-header {
+  padding: 14px 16px;
+  border-bottom: 0.5px solid var(--ca-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-list-title { font-family: var(--font-heading); font-size: 13px; font-weight: 600; }
+.see-all { font-size: 11px; color: var(--ca-red); cursor: pointer; font-weight: 500; }
+
+.course-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 0.5px solid var(--ca-gray-100);
+  transition: background var(--dur-fast);
+  cursor: pointer;
+}
+.course-row:last-child { border-bottom: none; }
+.course-row:hover { background: var(--ca-gray-100); }
+
+.course-icon {
+  width: 34px; height: 34px;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.course-info { flex: 1; }
+.course-name { font-size: 12px; font-weight: 500; color: var(--ca-black); }
+.course-sub { font-size: 10px; color: var(--ca-gray-400); margin-top: 1px; }
+.course-grade {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ca-graphite);
+}
+
+.schedule-card {
+  background: white;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.schedule-header {
+  padding: 12px 14px;
+  border-bottom: 0.5px solid var(--ca-gray-200);
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.schedule-item {
+  padding: 10px 14px;
+  border-left: 3px solid transparent;
+  border-bottom: 0.5px solid var(--ca-gray-100);
+  transition: background var(--dur-fast);
+  cursor: pointer;
+}
+.schedule-item:hover { background: var(--ca-gray-100); }
+.schedule-item:last-child { border-bottom: none; }
+.schedule-item.now { border-left-color: var(--ca-red); background: var(--ca-red-muted); }
+.schedule-time { font-size: 10px; font-family: 'Courier New', monospace; color: var(--ca-gray-400); margin-bottom: 2px; }
+.schedule-name { font-size: 12px; font-weight: 500; color: var(--ca-black); }
+.schedule-room { font-size: 10px; color: var(--ca-gray-400); }
+
+/* DARK MODE PREVIEW */
+.dark-preview {
+  background: var(--ca-graphite);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+}
+.dark-card {
+  background: var(--ca-graphite-mid);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.dark-text { color: rgba(255,255,255,0.9); }
+.dark-muted { color: rgba(255,255,255,0.45); font-size: 12px; }
+.dark-accent { color: var(--ca-gold); }
+
+/* TOKENS */
+.token-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.token-block {
+  background: var(--ca-graphite);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #8BE09A;
+  line-height: 1.8;
+}
+.token-comment { color: rgba(255,255,255,0.3); }
+.token-key { color: #6BC5F8; }
+.token-value { color: #F8C07A; }
+.token-punct { color: rgba(255,255,255,0.5); }
+
+/* MOTION */
+.motion-demo {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.motion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.motion-box {
+  width: 52px; height: 52px;
+  background: var(--ca-red);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base);
+}
+.motion-box:hover { transform: scale(1.15) translateY(-4px); opacity: 0.9; }
+.motion-label { font-size: 10px; color: var(--ca-gray-400); text-align: center; }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+@keyframes shimmer { 0%{opacity:0.4} 50%{opacity:0.8} 100%{opacity:0.4} }
+
+.skeleton {
+  background: linear-gradient(90deg, var(--ca-gray-100) 25%, var(--ca-gray-200) 50%, var(--ca-gray-100) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  animation: skeleton-wave 1.6s ease-in-out infinite;
+}
+@keyframes skeleton-wave {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+  background: white;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* TABS */
+.tabs-wrap { border-bottom: 0.5px solid var(--ca-gray-200); display: flex; gap: 0; margin-bottom: 20px; }
+.tab {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ca-gray-400);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+  white-space: nowrap;
+}
+.tab:hover { color: var(--ca-black); }
+.tab.active { color: var(--ca-red); border-bottom-color: var(--ca-red); }
+
+/* SECTION LABELS */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ca-gray-400);
+  margin-bottom: 20px;
+  padding: 4px 10px;
+  border: 0.5px solid var(--ca-gray-200);
+  border-radius: var(--radius-pill);
+}
+
+.section-divider-line {
+  width: 24px;
+  height: 2px;
+  background: var(--ca-red);
+  border-radius: 1px;
+}
+</style>
+</head>
+<body>
+<div class="ds-root">
+
+<!-- NAV -->
+<nav class="ds-nav">
+  <span class="ds-nav-logo">CA Design System</span>
+  <a class="ds-nav-link active" onclick="scrollTo(0,0)">Brand</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-color').scrollIntoView({behavior:'smooth'})">Cores</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-type').scrollIntoView({behavior:'smooth'})">Tipografia</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-spacing').scrollIntoView({behavior:'smooth'})">Espaçamento</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-comp').scrollIntoView({behavior:'smooth'})">Componentes</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-dashboard').scrollIntoView({behavior:'smooth'})">Dashboard</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-dark').scrollIntoView({behavior:'smooth'})">Dark Mode</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-tokens').scrollIntoView({behavior:'smooth'})">Tokens</a>
+  <a class="ds-nav-link" onclick="document.getElementById('s-motion').scrollIntoView({behavior:'smooth'})">Motion</a>
+</nav>
+
+<!-- 1. BRAND FOUNDATION -->
+<div class="brand-hero">
+  <div class="brand-wordmark">
+    <div class="brand-wordmark-main"><span class="brand-wordmark-accent">Campus</span> Angola</div>
+    <div class="brand-wordmark-sub">Ecossistema do Ensino Superior Angolano</div>
+    <div class="brand-tagline" style="margin-top:12px">"Centralizar, simplificar e humanizar toda a jornada académica do estudante."</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end">
+    <div class="brand-mark"><span class="brand-mark-inner">CA</span></div>
+    <div style="display:flex;gap:8px">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--ca-red)"></div>
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--ca-black)"></div>
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--ca-gold)"></div>
+      <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.2)"></div>
+    </div>
+    <div style="font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.12em;text-transform:uppercase">Paleta de identidade</div>
+  </div>
+</div>
+
+<!-- 2. COLOR SYSTEM -->
+<div class="ds-section" id="s-color">
+  <div class="ds-overline">02 — Sistema de Cores</div>
+  <div class="ds-section-title">Color System</div>
+  <div class="ds-section-desc">Paleta inspirada na bandeira angolana, interfaces SaaS premium e identidade académica. Cada cor tem função semântica definida.</div>
+
+  <div style="margin-bottom:20px">
+    <div class="section-label"><span class="section-divider-line"></span>Cores Primárias</div>
+  </div>
+  <div class="color-grid" style="margin-bottom:32px">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C0182A"><span class="color-swatch-tag">PRIMARY</span></div>
+      <div class="color-info"><div class="color-name">Vermelho Angola</div><div class="color-hex">#C0182A</div><div class="color-use">CTAs, links, ênfase</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#8B0F1E"><span class="color-swatch-tag">DEEP</span></div>
+      <div class="color-info"><div class="color-name">Vermelho Profundo</div><div class="color-hex">#8B0F1E</div><div class="color-use">Hover, pressed states</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0E0E10"><span class="color-swatch-tag">BASE</span></div>
+      <div class="color-info"><div class="color-name">Grafite Negro</div><div class="color-hex">#0E0E10</div><div class="color-use">Texto principal</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C49A2A"><span class="color-swatch-tag">ACCENT</span></div>
+      <div class="color-info"><div class="color-name">Dourado Académico</div><div class="color-hex">#C49A2A</div><div class="color-use">Destaque, excelência</div></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:20px">
+    <div class="section-label"><span class="section-divider-line"></span>Cores Semânticas</div>
+  </div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#1A7A4A"><span class="color-swatch-tag">SUCCESS</span></div>
+      <div class="color-info"><div class="color-name">Verde Sucesso</div><div class="color-hex">#1A7A4A</div><div class="color-use">Aprovado, concluído</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#B07A10"><span class="color-swatch-tag">WARNING</span></div>
+      <div class="color-info"><div class="color-name">Âmbar Aviso</div><div class="color-hex">#B07A10</div><div class="color-use">Atenção, pendente</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#1A5AA0"><span class="color-swatch-tag">INFO</span></div>
+      <div class="color-info"><div class="color-name">Azul Informação</div><div class="color-hex">#1A5AA0</div><div class="color-use">Links, info, notas</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F2F2EF"><span class="color-swatch-tag" style="color:var(--ca-gray-400)">SURFACE</span></div>
+      <div class="color-info"><div class="color-name">Cinza Superfície</div><div class="color-hex">#F2F2EF</div><div class="color-use">Fundos, separadores</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-divider" style="margin-top:56px"></div>
+
+<!-- 3. TYPOGRAPHY -->
+<div class="ds-section" id="s-type">
+  <div class="ds-overline">03 — Tipografia</div>
+  <div class="ds-section-title">Type System</div>
+  <div class="ds-section-desc">Sora para headings institucionais e DM Sans para corpo de texto. Combinação de sofisticação académica com legibilidade extrema em qualquer dispositivo.</div>
+
+  <div class="tabs-wrap">
+    <div class="tab active">Escala Tipográfica</div>
+    <div class="tab">Fontes</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">Display</div><div class="type-spec">Sora · 48px · 700</div></div>
+      <div class="type-example" style="font-family:var(--font-heading);font-size:42px;font-weight:700;letter-spacing:-0.02em;line-height:1.1">Campus Angola</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">H1</div><div class="type-spec">Sora · 32px · 700</div></div>
+      <div class="type-example" style="font-family:var(--font-heading);font-size:28px;font-weight:700;letter-spacing:-0.01em">O Futuro do Ensino Superior</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">H2</div><div class="type-spec">Sora · 22px · 600</div></div>
+      <div class="type-example" style="font-family:var(--font-heading);font-size:20px;font-weight:600">Universidades Disponíveis</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">H3</div><div class="type-spec">Sora · 17px · 600</div></div>
+      <div class="type-example" style="font-family:var(--font-heading);font-size:16px;font-weight:600">Histórico Académico</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">Body LG</div><div class="type-spec">DM Sans · 16px · 400</div></div>
+      <div class="type-example" style="font-family:var(--font-body);font-size:15px;font-weight:400;line-height:1.7;color:var(--ca-gray-600)">A plataforma centraliza toda a informação académica angolana numa experiência digital moderna, acessível e confiável para estudantes e instituições.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">Body SM</div><div class="type-spec">DM Sans · 13px · 400</div></div>
+      <div class="type-example" style="font-family:var(--font-body);font-size:13px;line-height:1.6;color:var(--ca-gray-600)">Consulte o seu histórico, notas e propinas em qualquer momento.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">Caption</div><div class="type-spec">DM Sans · 11px · 400</div></div>
+      <div class="type-example" style="font-family:var(--font-body);font-size:11px;color:var(--ca-gray-400)">Actualizado em 4 de Junho de 2026 · Sistema v2.1</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">Overline</div><div class="type-spec">Sora · 10px · 600 · UC</div></div>
+      <div class="type-example" style="font-family:var(--font-heading);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca-red)">Candidaturas Abertas</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-label">Button</div><div class="type-spec">DM Sans · 13px · 500</div></div>
+      <div class="type-example" style="font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:0.01em">Começar Candidatura</div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-divider"></div>
+
+<!-- 4. SPACING -->
+<div class="ds-section" id="s-spacing">
+  <div class="ds-overline">04 — Espaçamento e Grid</div>
+  <div class="ds-section-title">Spacing & Layout</div>
+  <div class="ds-section-desc">Sistema de 4px base. Containers responsivos com breakpoints optimizados para Angola (mobile-first, conexões lentas).</div>
+
+  <div class="spacing-grid">
+    <div class="spacing-row"><div class="spacing-label">4px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:4px"></div></div><div class="spacing-desc">space-1 · ícones internos</div></div>
+    <div class="spacing-row"><div class="spacing-label">8px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px"></div></div><div class="spacing-desc">space-2 · gap de elementos inline</div></div>
+    <div class="spacing-row"><div class="spacing-label">12px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:12px"></div></div><div class="spacing-desc">space-3 · padding de botões</div></div>
+    <div class="spacing-row"><div class="spacing-label">16px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px"></div></div><div class="spacing-desc">space-4 · padding de cards</div></div>
+    <div class="spacing-row"><div class="spacing-label">24px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px"></div></div><div class="spacing-desc">space-6 · gap entre componentes</div></div>
+    <div class="spacing-row"><div class="spacing-label">32px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32px"></div></div><div class="spacing-desc">space-8 · secções de página</div></div>
+    <div class="spacing-row"><div class="spacing-label">48px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:48px"></div></div><div class="spacing-desc">space-12 · espaço de secção</div></div>
+    <div class="spacing-row"><div class="spacing-label">64px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:64px"></div></div><div class="spacing-desc">space-16 · blocos de hero</div></div>
+  </div>
+
+  <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+    <div style="background:var(--ca-red-muted);border-radius:var(--radius-lg);padding:16px;border:0.5px solid var(--ca-red-soft)">
+      <div class="type-label" style="color:var(--ca-red);margin-bottom:8px">Mobile</div>
+      <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ca-black)">≤ 768px</div>
+      <div style="font-size:11px;color:var(--ca-gray-600);margin-top:4px">1 coluna · padding 16px · priority-first</div>
+    </div>
+    <div style="background:var(--ca-gold-pale);border-radius:var(--radius-lg);padding:16px;border:0.5px solid var(--ca-gold-soft)">
+      <div class="type-label" style="color:var(--ca-gold);margin-bottom:8px">Tablet</div>
+      <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ca-black)">769–1024px</div>
+      <div style="font-size:11px;color:var(--ca-gray-600);margin-top:4px">2 colunas · padding 24px · sidebar opcional</div>
+    </div>
+    <div style="background:var(--ca-info-bg);border-radius:var(--radius-lg);padding:16px;border:0.5px solid #C5D9F5">
+      <div class="type-label" style="color:var(--ca-info);margin-bottom:8px">Desktop</div>
+      <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ca-black)">≥ 1025px</div>
+      <div style="font-size:11px;color:var(--ca-gray-600);margin-top:4px">3–4 colunas · max 1280px · sidebar fixa</div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-divider"></div>
+
+<!-- 5. COMPONENTS -->
+<div class="ds-section" id="s-comp">
+  <div class="ds-overline">05 — Componentes</div>
+  <div class="ds-section-title">Component Library</div>
+  <div class="ds-section-desc">Todos os componentes seguem os princípios: semântico, acessível, responsivo e emocionalmente motivador.</div>
+
+  <div class="comp-grid">
+    <!-- BUTTONS -->
+    <div class="comp-card">
+      <div class="comp-card-title">Botões</div>
+      <div class="btn-row" style="margin-bottom:12px">
+        <button class="btn btn-primary">Candidatar-me</button>
+        <button class="btn btn-secondary">Ver mais</button>
+        <button class="btn btn-ghost">Entrar</button>
+      </div>
+      <div class="btn-row" style="margin-bottom:12px">
+        <button class="btn btn-gold">Premium</button>
+        <button class="btn btn-primary btn-sm">Filtrar</button>
+        <button class="btn btn-secondary btn-sm">Exportar</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary btn-lg">Começar Candidatura →</button>
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="comp-card">
+      <div class="comp-card-title">Inputs</div>
+      <div class="input-wrap">
+        <div class="input-label">Número de estudante</div>
+        <input class="input-field" type="text" placeholder="Ex: 2024001234">
+        <div class="input-hint">Encontra no teu cartão universitário</div>
+      </div>
+      <div class="input-wrap">
+        <div class="input-label">Email institucional</div>
+        <input class="input-field error" type="email" value="estudante@" placeholder="">
+        <div class="input-hint error-msg">Email inválido. Usa o email da tua universidade.</div>
+      </div>
+    </div>
+
+    <!-- BADGES -->
+    <div class="comp-card">
+      <div class="comp-card-title">Badges & Estados</div>
+      <div class="badge-row" style="margin-bottom:12px">
+        <span class="badge badge-red">Candidatura Aberta</span>
+        <span class="badge badge-gold">Destaque</span>
+        <span class="badge badge-success">Aprovado</span>
+        <span class="badge badge-info">Novo</span>
+        <span class="badge badge-gray">Presencial</span>
+      </div>
+      <div style="margin-top:16px">
+        <div class="alert alert-success">
+          <div class="alert-icon">✓</div>
+          <div class="alert-content"><div class="alert-title">Matrícula confirmada</div><div class="alert-desc">Ano lectivo 2025/26 · Engenharia Informática</div></div>
+        </div>
+        <div class="alert alert-warning">
+          <div class="alert-icon">!</div>
+          <div class="alert-content"><div class="alert-title">Propina pendente</div><div class="alert-desc">Vence em 15 de Junho · 45.000 Kz</div></div>
+        </div>
+        <div class="alert alert-info">
+          <div class="alert-icon">i</div>
+          <div class="alert-content"><div class="alert-title">Resultados publicados</div><div class="alert-desc">Exame de Cálculo I · 2º Semestre</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STUDENT CARD -->
+    <div class="comp-card">
+      <div class="comp-card-title">Student Cards</div>
+      <div class="student-card">
+        <div class="avatar avatar-red">AM</div>
+        <div class="student-info">
+          <div class="student-name">Ana Maria Lopes</div>
+          <div class="student-meta">Engenharia Informática · 3º Ano · UCAN</div>
+        </div>
+        <div class="grade-pill">16.4</div>
+      </div>
+      <div class="student-card">
+        <div class="avatar avatar-gold">JN</div>
+        <div class="student-info">
+          <div class="student-name">João Neto Ferreira</div>
+          <div class="student-meta">Medicina · 2º Ano · UAN</div>
+        </div>
+        <div class="grade-pill" style="color:var(--ca-gold);background:var(--ca-gold-soft)">18.0</div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="comp-card">
+      <div class="comp-card-title">Progress & Desempenho</div>
+      <div class="progress-wrap">
+        <div class="progress-header"><span class="progress-title">Progresso do Curso</span><span class="progress-pct">68%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:68%"></div></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-header"><span class="progress-title">Média Acumulada</span><span class="progress-pct">15.8 / 20</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill fill-gold" style="width:79%"></div></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-header"><span class="progress-title">Frequência</span><span class="progress-pct">94%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill fill-success" style="width:94%"></div></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-header"><span class="progress-title">Disciplinas Aprovadas</span><span class="progress-pct">12 / 18</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:66%"></div></div>
+      </div>
+    </div>
+
+    <!-- UNIVERSITY CARD -->
+    <div class="comp-card">
+      <div class="comp-card-title">University Card</div>
+      <div class="uni-card">
+        <div class="uni-card-header" style="background:linear-gradient(135deg,#0E0E10,#2C2C35)">
+          <div style="display:flex;gap:10px;align-items:center">
+            <div class="uni-card-logo"><span style="color:var(--ca-red);font-family:var(--font-heading);font-weight:700">UA</span></div>
+            <div style="color:white">
+              <div style="font-family:var(--font-heading);font-size:13px;font-weight:600">Universidade Agostinho Neto</div>
+              <div style="font-size:10px;opacity:0.6">Luanda, Angola</div>
+            </div>
+          </div>
+        </div>
+        <div class="uni-card-body">
+          <div class="uni-meta">Pública · 47 cursos · Fundada 1963</div>
+          <div class="uni-tags">
+            <span class="badge badge-gray">Presencial</span>
+            <span class="badge badge-info">Pública</span>
+            <span class="badge badge-gold">Destaque</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SKELETON -->
+  <div style="margin-top:24px">
+    <div class="comp-card-title" style="padding:0 0 16px;font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca-gray-400)">Loading Skeletons</div>
+    <div class="skeleton-card">
+      <div class="skeleton" style="width:44px;height:44px;border-radius:50%;flex-shrink:0"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+        <div class="skeleton" style="width:60%;height:12px"></div>
+        <div class="skeleton" style="width:40%;height:10px"></div>
+      </div>
+      <div class="skeleton" style="width:48px;height:28px;border-radius:var(--radius-md)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-divider"></div>
+
+<!-- 6. DASHBOARD PREVIEW -->
+<div class="ds-section" id="s-dashboard">
+  <div class="ds-overline">06 — Dashboard Pattern</div>
+  <div class="ds-section-title">Student Dashboard</div>
+  <div class="ds-section-desc">O coração da plataforma. Organizado, inteligente e emocionalmente motivador. Cada elemento gera sentido de progresso.</div>
+
+  <div class="dashboard-preview">
+    <div class="dash-header">
+      <div>
+        <div class="dash-greeting">Bom dia, Ana Maria 👋</div>
+        <div class="dash-sub">Terça-feira, 4 de Junho · 3º Ano · Engenharia Informática</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span class="badge badge-success">Matrícula activa</span>
+        <div class="avatar avatar-red" style="width:36px;height:36px;font-size:13px">AM</div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">15.8</div>
+        <div class="stat-label">Média geral</div>
+        <div class="stat-delta delta-up">↑ +0.4 este semestre</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">94%</div>
+        <div class="stat-label">Frequência</div>
+        <div class="stat-delta delta-up">↑ Acima do mínimo</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">12/18</div>
+        <div class="stat-label">Aprovações</div>
+        <div class="stat-delta" style="color:var(--ca-gold)">→ Em progresso</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">68%</div>
+        <div class="stat-label">Curso concluído</div>
+        <div class="stat-delta delta-up">↑ 6 disciplinas este semestre</div>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-main">
+        <div class="course-list-card">
+          <div class="course-list-header">
+            <span class="course-list-title">Disciplinas · 2º Semestre</span>
+            <span class="see-all">Ver todas →</span>
+          </div>
+          <div class="course-row">
+            <div class="course-icon" style="background:var(--ca-red-muted)">📐</div>
+            <div class="course-info"><div class="course-name">Cálculo II</div><div class="course-sub">Prof. Mário Santos · Seg/Qua 08h00</div></div>
+            <div class="course-grade">16</div>
+          </div>
+          <div class="course-row">
+            <div class="course-icon" style="background:var(--ca-info-bg)">💻</div>
+            <div class="course-info"><div class="course-name">Programação Orientada a Objectos</div><div class="course-sub">Prof. Carla Neto · Ter/Qui 10h00</div></div>
+            <div class="course-grade">18</div>
+          </div>
+          <div class="course-row">
+            <div class="course-icon" style="background:var(--ca-success-bg)">🔌</div>
+            <div class="course-info"><div class="course-name">Redes de Computadores</div><div class="course-sub">Prof. Pedro Lima · Qua 14h00</div></div>
+            <div class="course-grade">14</div>
+          </div>
+          <div class="course-row">
+            <div class="course-icon" style="background:var(--ca-gold-pale)">📊</div>
+            <div class="course-info"><div class="course-name">Estruturas de Dados</div><div class="course-sub">Prof. Ana Ferreira · Sex 08h00</div></div>
+            <div class="course-grade" style="color:var(--ca-warning)">9</div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-side">
+        <div class="schedule-card">
+          <div class="schedule-header">Hoje · Terça 4 Jun</div>
+          <div class="schedule-item now">
+            <div class="schedule-time">08h00 – 10h00 · AGORA</div>
+            <div class="schedule-name">Cálculo II</div>
+            <div class="schedule-room">Sala B-204</div>
+          </div>
+          <div class="schedule-item">
+            <div class="schedule-time">10h00 – 12h00</div>
+            <div class="schedule-name">POO</div>
+            <div class="schedule-room">Lab Informática 3</div>
+          </div>
+          <div class="schedule-item">
+            <div class="schedule-time">14h00 – 15h30</div>
+            <div class="schedule-name">Redes</div>
+            <div class="schedule-room">Sala A-101</div>
+          </div>
+        </div>
+
+        <div style="background:white;border:0.5px solid var(--ca-gray-200);border-radius:var(--radius-lg);padding:14px;box-shadow:var(--shadow-sm)">
+          <div style="font-family:var(--font-heading);font-size:12px;font-weight:600;margin-bottom:12px">Alertas académicos</div>
+          <div class="alert alert-warning" style="margin-bottom:8px">
+            <div class="alert-icon">!</div>
+            <div class="alert-content"><div class="alert-title">Propina Julho</div><div class="alert-desc">Vence em 15 Jun · 45.000 Kz</div></div>
+          </div>
+          <div class="alert alert-info">
+            <div class="alert-icon">i</div>
+            <div class="alert-content"><div class="alert-title">Resultados publicados</div><div class="alert-desc">Estruturas de Dados · Freq.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-divider" style="margin-top:56px"></div>
+
+<!-- 7. DARK MODE -->
+<div class="ds-section" id="s-dark">
+  <div class="ds-overline">07 — Dark Mode</div>
+  <div class="ds-section-title">Dark Mode System</div>
+  <div class="ds-section-desc">Estratégia de cores invertida mantendo contraste WCAG AA. Grafite profundo como base, evitando preto puro para reduzir fadiga visual.</div>
+
+  <div class="dark-preview">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div>
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:white">Campus <span style="color:var(--ca-red)">Angola</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;letter-spacing:0.06em">MODO ESCURO · DASHBOARD</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--ca-red)"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--ca-gold)"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2)"></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+      <div class="dark-card">
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:white">15.8</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px">Média geral</div>
+        <div style="font-size:10px;color:#4ABA7A;margin-top:6px">↑ +0.4</div>
+      </div>
+      <div class="dark-card">
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:white">94%</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px">Frequência</div>
+        <div style="font-size:10px;color:#4ABA7A;margin-top:6px">↑ Excelente</div>
+      </div>
+      <div class="dark-card">
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--ca-gold)">68%</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px">Curso concluído</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:6px">→ Em progresso</div>
+      </div>
+    </div>
+
+    <div class="dark-card">
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.6);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.1em">Última actividade</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--ca-red);flex-shrink:0"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.75)">Notas de Cálculo II publicadas</div>
+          <div style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.3)">há 2h</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--ca-gold);flex-shrink:0"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.75)">Matrícula 2025/26 confirmada</div>
+          <div style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.3)">ontem</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:6px;height:6px;border-radius:50%;background:#1A5AA0;flex-shrink:0"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.75)">Propina de Junho paga</div>
+          <div style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.3)">3 Jun</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;padding:12px 16px;background:rgba(192,24,42,0.15);border:0.5px solid rgba(192,24,42,0.3);border-radius:var(--radius-md)">
+      <div style="font-size:11px;font-weight:600;color:var(--ca-red);margin-bottom:3px">⚠ Alerta académico</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.55)">Propina de Julho vence em 15 dias · 45.000 Kz</div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-divider" style="margin-top:56px"></div>
+
+<!-- 8. TOKENS -->
+<div class="ds-section" id="s-tokens">
+  <div class="ds-overline">08 — Design Tokens</div>
+  <div class="ds-section-title">Token System</div>
+  <div class="ds-section-desc">Tokens exportáveis em CSS Variables, Tailwind config e JSON. Estrutura hierárquica: Global → Semântico → Componente.</div>
+
+  <div class="token-grid">
+    <div class="token-block">
+<span class="token-comment">/* CSS Variables */</span><br>
+<span class="token-key">:root</span> {<br>
+&nbsp;&nbsp;<span class="token-key">--ca-primary</span>: <span class="token-value">#C0182A</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-primary-deep</span>: <span class="token-value">#8B0F1E</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-accent</span>: <span class="token-value">#C49A2A</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-surface</span>: <span class="token-value">#F2F2EF</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-text-primary</span>: <span class="token-value">#0E0E10</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-text-muted</span>: <span class="token-value">#9E9E96</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-success</span>: <span class="token-value">#1A7A4A</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-warning</span>: <span class="token-value">#B07A10</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--ca-error</span>: <span class="token-value">#C0182A</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--font-heading</span>: <span class="token-value">'Sora'</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--font-body</span>: <span class="token-value">'DM Sans'</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--radius-sm</span>: <span class="token-value">4px</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--radius-md</span>: <span class="token-value">8px</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--radius-lg</span>: <span class="token-value">12px</span>;<br>
+&nbsp;&nbsp;<span class="token-key">--radius-xl</span>: <span class="token-value">20px</span>;<br>
+}
+    </div>
+    <div class="token-block">
+<span class="token-comment">// Tailwind config</span><br>
+<span class="token-key">colors</span>: {<br>
+&nbsp;&nbsp;<span class="token-key">primary</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="token-key">DEFAULT</span>: <span class="token-value">'#C0182A'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="token-key">deep</span>: <span class="token-value">'#8B0F1E'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="token-key">soft</span>: <span class="token-value">'#F5D0D4'</span>,<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;<span class="token-key">accent</span>: <span class="token-value">'#C49A2A'</span>,<br>
+&nbsp;&nbsp;<span class="token-key">surface</span>: <span class="token-value">'#F2F2EF'</span>,<br>
+},<br>
+<span class="token-key">fontFamily</span>: {<br>
+&nbsp;&nbsp;<span class="token-key">heading</span>: <span class="token-value">['Sora']</span>,<br>
+&nbsp;&nbsp;<span class="token-key">body</span>: <span class="token-value">['DM Sans']</span>,<br>
+},<br>
+<span class="token-key">borderRadius</span>: {<br>
+&nbsp;&nbsp;<span class="token-key">sm</span>: <span class="token-value">'4px'</span>,<br>
+&nbsp;&nbsp;<span class="token-key">md</span>: <span class="token-value">'8px'</span>,<br>
+&nbsp;&nbsp;<span class="token-key">lg</span>: <span class="token-value">'12px'</span>,<br>
+&nbsp;&nbsp;<span class="token-key">xl</span>: <span class="token-value">'20px'</span>,<br>
+}
+    </div>
+  </div>
+</div>
+
+<div class="ds-divider" style="margin-top:56px"></div>
+
+<!-- 9. MOTION -->
+<div class="ds-section" id="s-motion">
+  <div class="ds-overline">09 — Motion Design</div>
+  <div class="ds-section-title">Animation System</div>
+  <div class="ds-section-desc">Motion elegante, rápido e subtil. Easing baseado em física real. Nunca decorativo — sempre funcional e significativo.</div>
+
+  <div class="motion-demo">
+    <div class="motion-item">
+      <div class="motion-box" style="transition-duration:100ms"></div>
+      <div class="motion-label">Fast · 100ms<br>Hover, toggles</div>
+    </div>
+    <div class="motion-item">
+      <div class="motion-box" style="transition-duration:240ms"></div>
+      <div class="motion-label">Base · 240ms<br>Cards, modals</div>
+    </div>
+    <div class="motion-item">
+      <div class="motion-box" style="transition-duration:380ms"></div>
+      <div class="motion-label">Slow · 380ms<br>Page transitions</div>
+    </div>
+    <div class="motion-item">
+      <div class="motion-box" style="transition-duration:600ms;border-radius:50%"></div>
+      <div class="motion-label">Emphasis · 600ms<br>Celebração, conquista</div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;background:var(--ca-gray-100);border-radius:var(--radius-lg);padding:20px">
+    <div style="font-family:var(--font-heading);font-size:12px;font-weight:600;color:var(--ca-gray-600);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.1em">Easing Curves</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="background:white;border:0.5px solid var(--ca-gray-200);border-radius:var(--radius-md);padding:12px">
+        <div style="font-size:11px;font-weight:600;color:var(--ca-black);margin-bottom:4px">ease-out</div>
+        <div style="font-size:10px;font-family:monospace;color:var(--ca-gray-400)">cubic-bezier(0.16,1,0.3,1)</div>
+        <div style="font-size:10px;color:var(--ca-gray-600);margin-top:4px">Elementos a entrar no ecrã</div>
+      </div>
+      <div style="background:white;border:0.5px solid var(--ca-gray-200);border-radius:var(--radius-md);padding:12px">
+        <div style="font-size:11px;font-weight:600;color:var(--ca-black);margin-bottom:4px">ease-in-out</div>
+        <div style="font-size:10px;font-family:monospace;color:var(--ca-gray-400)">cubic-bezier(0.4,0,0.2,1)</div>
+        <div style="font-size:10px;color:var(--ca-gray-600);margin-top:4px">Transições de página</div>
+      </div>
+      <div style="background:white;border:0.5px solid var(--ca-gray-200);border-radius:var(--radius-md);padding:12px">
+        <div style="font-size:11px;font-weight:600;color:var(--ca-black);margin-bottom:4px">spring</div>
+        <div style="font-size:10px;font-family:monospace;color:var(--ca-gray-400)">stiffness:300 · damping:30</div>
+        <div style="font-size:10px;color:var(--ca-gray-600);margin-top:4px">Drag, conquistas, celebrações</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="margin: 64px 24px 0;padding: 32px;background:var(--ca-graphite);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+  <div>
+    <div style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:white">Campus <span style="color:var(--ca-red)">Angola</span></div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.06em">Design System v1.0 · Editorial Futurista Africano</div>
+  </div>
+  <div style="display:flex;gap:16px;align-items:center">
+    <div style="text-align:center">
+      <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ca-gold)">9</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.35)">Secções</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ca-red)">28+</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.35)">Componentes</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:white">AA</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.35)">WCAG</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach((tab, i) => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+const bars = document.querySelectorAll('.progress-bar-fill');
+setTimeout(() => {
+  bars.forEach(b => {
+    const w = b.style.width;
+    b.style.width = '0%';
+    setTimeout(() => b.style.width = w, 50);
+  });
+}, 600);
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+/* Campus Angola — Design Tokens */
+:root {
+  /* Brand */
+  --ca-primary: #C0182A;
+  --ca-primary-deep: #8B0F1E;
+  --ca-primary-soft: #FBEAEC;
+  --ca-ink: #0E0E10;
+  --ca-gold: #C49A2A;
+  --ca-gold-soft: #F7EFD6;
+
+  /* Semantic */
+  --ca-success: #1A7A4A;
+  --ca-success-soft: #E2F1E9;
+  --ca-warning: #B07A10;
+  --ca-warning-soft: #FBF1DA;
+  --ca-info: #1A5AA0;
+  --ca-info-soft: #E1ECF8;
+  --ca-danger: #C0182A;
+
+  /* Neutrals */
+  --ca-paper: #FAFAF8;
+  --ca-paper-2: #F4F3EE;
+  --ca-white: #FFFFFF;
+  --ca-gray-100: #F2F2EF;
+  --ca-gray-200: #E6E5E0;
+  --ca-gray-300: #D4D3CC;
+  --ca-gray-400: #A8A79F;
+  --ca-gray-500: #6F6E66;
+  --ca-gray-600: #4A4944;
+  --ca-gray-700: #2C2B28;
+  --ca-gray-800: #1A1A18;
+
+  /* Type */
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(14,14,16,0.06), 0 1px 2px rgba(14,14,16,0.04);
+  --shadow-md: 0 4px 14px rgba(14,14,16,0.07);
+  --shadow-lg: 0 12px 32px rgba(14,14,16,0.10);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 380ms;
+
+  /* Shadcn bridge — keep for any base components used */
+  --background: var(--ca-paper);
+  --foreground: var(--ca-ink);
+  --card: var(--ca-white);
+  --card-foreground: var(--ca-ink);
+  --popover: var(--ca-white);
+  --popover-foreground: var(--ca-ink);
+  --primary: var(--ca-primary);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--ca-gray-100);
+  --secondary-foreground: var(--ca-ink);
+  --muted: var(--ca-gray-100);
+  --muted-foreground: var(--ca-gray-500);
+  --accent: var(--ca-gold-soft);
+  --accent-foreground: var(--ca-ink);
+  --destructive: var(--ca-danger);
+  --destructive-foreground: #FFFFFF;
+  --border: var(--ca-gray-200);
+  --input: transparent;
+  --input-background: var(--ca-white);
+  --ring: var(--ca-primary);
+  --radius: 10px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--ca-primary);
+  --color-primary-deep: var(--ca-primary-deep);
+  --color-primary-soft: var(--ca-primary-soft);
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-ink: var(--ca-ink);
+  --color-paper: var(--ca-paper);
+  --color-paper-2: var(--ca-paper-2);
+  --color-gold: var(--ca-gold);
+  --color-gold-soft: var(--ca-gold-soft);
+  --color-success: var(--ca-success);
+  --color-success-soft: var(--ca-success-soft);
+  --color-warning: var(--ca-warning);
+  --color-warning-soft: var(--ca-warning-soft);
+  --color-info: var(--ca-info);
+  --color-info-soft: var(--ca-info-soft);
+  --color-danger: var(--ca-danger);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-gray-50: #F8F7F4;
+  --color-gray-100: var(--ca-gray-100);
+  --color-gray-200: var(--ca-gray-200);
+  --color-gray-300: var(--ca-gray-300);
+  --color-gray-400: var(--ca-gray-400);
+  --color-gray-500: var(--ca-gray-500);
+  --color-gray-600: var(--ca-gray-600);
+  --color-gray-700: var(--ca-gray-700);
+  --color-gray-800: var(--ca-gray-800);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html, body {
+    background: var(--ca-paper);
+    color: var(--ca-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--ca-ink);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 20px; font-weight: 600; }
+  h3 { font-size: 16px; font-weight: 600; }
+  ::selection { background: var(--ca-primary); color: #fff; }
+  input, button, textarea, select { font-family: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--ca-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* Utility helpers */
+.font-display { font-family: var(--font-display); }
+.text-display { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+.text-eyebrow { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ca-gray-500); }
+.text-caption { font-size: 11px; letter-spacing: 0.02em; color: var(--ca-gray-500); }
+.text-meta { font-size: 13px; color: var(--ca-gray-500); }
+
+.ca-divider { height: 1px; background: var(--ca-gray-200); }
+.ca-rule-gold { height: 2px; width: 32px; background: var(--ca-gold); }
+
+.ca-grain {
+  background-image: radial-gradient(rgba(14,14,16,0.025) 1px, transparent 1px);
+  background-size: 3px 3px;
+}

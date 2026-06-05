@@ -1,0 +1,8 @@
+/* Campus Angola — global resets */
+html, body, #root { height: 100%; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; }
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
